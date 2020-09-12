@@ -4,6 +4,17 @@ def has_negatives(a):
     """
     # Your code here
 
+    negative_values = {}
+
+    for x in a:
+        negative_values[x] = -x
+    
+    result = []
+
+    for x in negative_values.keys():
+        if x > 0 and negative_values[x] in negative_values:
+            result.append(x)
+
     return result
 
 
