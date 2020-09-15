@@ -1,5 +1,8 @@
-from functools import reduce
-# from hashtable import HashTable
+def value_in_dict(value, dicts):
+    for dict in dicts:
+        if value not in dict:
+            return False
+    return True
 
 
 def intersection(arrays):
@@ -7,7 +10,23 @@ def intersection(arrays):
     YOUR CODE HERE
     """
     # Your code here
-    result = list(reduce(lambda i, j: i & j, (set(x) for x in arrays)))
+    # result = list(reduce(lambda i, j: i & j, (set(x) for x in arrays)))
+    unique_dict = []
+
+    for array in arrays:
+        uninque_values = {}
+
+        for value in array:
+            uninque_values[value] = True
+
+        unique_dict.append(uninque_values)
+
+    last_dict = unique_dict[-1]
+    result = []
+
+    for value in last_dict:
+        if value_in_dict(value, unique_dict[:-1]):
+            result.append(value)
 
     return result
 
